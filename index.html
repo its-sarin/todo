@@ -31,7 +31,7 @@
       <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
         <div id="task-area" class="jumbotron">
           <div class="container" ng-controller="TaskCtrl">      
-            <input type="text" class="form-control input-lg" ng-keydown="addTask($event)" ng-model="todo" placeholder="enter a task">
+            <input type="text" class="form-control input-lg" ng-keydown="addTask($event)" ng-model="todo" placeholder="enter a task" autofocus>
             <ul id="task-list" class="list-group">
               <li class="list-group-item task-item" ng-click="removeTask($index)" ng-repeat="task in tasks">
                 {{task.task}}
