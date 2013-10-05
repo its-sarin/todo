@@ -1,0 +1,101 @@
+/*
+	Navigation
+*/
+#top-nav {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+/* 
+	Task list
+*/
+#task-area {
+  background-color: #cccccc;
+  margin-top: 20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+#task-list {
+  margin-top: 20px;
+}
+#task-list .task-item {
+  font-weight: bold;
+  cursor: pointer;
+}
+#task-list .task-item:hover {
+  background-color: #f5f5f5;
+}
+/* 
+	Helper classes 
+*/
+.black {
+  color: #000;
+}
+.bold {
+  font-weight: bold;
+}
+.bump-5 {
+  margin-top: 5px;
+}
+.bump-10 {
+  margin-top: 10px;
+}
+.bump-20 {
+  margin-top: 20px;
+}
+.bump-30 {
+  margin-top: 30px;
+}
+.bump-40 {
+  margin-top: 40px;
+}
+.bump-60 {
+  margin-top: 60px;
+}
+.bump-80 {
+  margin-top: 80px;
+}
+.bump-100 {
+  margin-top: 100px;
+}
+.center {
+  text-align: center;
+}
+.center-element {
+  margin-left: auto;
+  margin-right: auto;
+}
+.interactive {
+  cursor: pointer;
+}
+.invis {
+  display: none;
+}
+.fleft {
+  float: left;
+}
+.fright {
+  float: right;
+}
+.font-sm {
+  font-size: 12px;
+}
+.font-md {
+  font-size: 16px;
+}
+.font-lg {
+  font-size: 18px;
+}
+.max-height {
+  height: 100%;
+}
+.no-float {
+  float: none;
+}
+.vis {
+  display: block;
+}
+.white {
+  color: #fff;
+}

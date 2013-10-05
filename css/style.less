@@ -1,0 +1,125 @@
+@import "elements.less";
+
+/*
+	Navigation
+*/
+
+#top-nav	{
+	.rounded(0);
+}
+
+/* 
+	Task list
+*/
+#task-area	{
+	background-color: #cccccc;
+	.margin(top, 20px);
+	.rounded(4px);
+}
+
+#task-list	{
+	margin-top: 20px;
+	.task-item	{
+		font-weight: bold;
+		.interactive;
+		&:hover	{
+			background-color: #f5f5f5;
+		}
+	}
+}
+
+/* 
+	Helper classes 
+*/
+
+.black	{color: #000;}
+.bold 	{font-weight: bold;}
+.bump-5		{margin-top: 5px;}
+.bump-10	{margin-top: 10px;}
+.bump-20	{margin-top: 20px;}
+.bump-30	{margin-top: 30px;}
+.bump-40	{margin-top: 40px;}
+.bump-60	{margin-top: 60px;}
+.bump-80	{margin-top: 80px;}
+.bump-100	{margin-top: 100px;}
+.center	{text-align: center;}
+.center-element	{
+	.margin(left, auto);
+	.margin(right, auto);
+}
+.interactive	{cursor: pointer;}
+.invis	{display: none;}
+.fleft	{float: left;}
+.fright	{float: right;}
+.font-sm	{
+	font-size: 12px;
+}
+.font-md	{
+	font-size: 16px;
+}
+.font-lg	{
+	font-size: 18px;
+}
+.margin (top, @top: 20px)	{
+	margin-top: @top;
+}
+.margin (right, @right: 20px)	{
+	margin-right: @right;
+}
+.margin (bottom, @bottom: 20px)	{
+	margin-bottom: @bottom;
+}
+.margin (left, @left: 20px)	{
+	margin-left: @left;
+}
+.margins (@margin)	{
+	margin: @margin;
+}
+.margins (@topbottom, @rightleft)	{
+	margin: @topbottom @rightleft;
+}
+.margins (@top, @right, @bottom, @left)	{
+	margin: @top @right @bottom @left;
+}
+.max-height 	{
+	height: 100%;
+}
+.no-float	{
+	float: none;
+}
+.padding (top, @top: 20px)	{
+	padding-top: @top;
+}
+.padding (right, @right: 20px)	{
+	padding-right: @right;
+}
+.padding (bottom, @bottom: 20px)	{
+	padding-bottom: @bottom;
+}
+.padding (left, @left: 20px)	{
+	padding-left: @left;
+}
+.paddings (@padding)	{
+	padding: @padding;
+}
+.paddings (@topbottom, @rightleft)	{
+	padding: @topbottom @rightleft;
+}
+.paddings (@top, @right, @bottom, @left)	{
+	padding: @top @right @bottom @left;
+}
+.position-absolute-left(@top: 0, @left: 0)	{
+	position: absolute;
+	top: @top;
+	left: @left;
+}
+.position-absolute-right(@top: 0, @right: 0)	{
+	position: absolute;
+	top: @top;
+	right: @right;
+}
+.textshadow(@hor: 1px, @vert: 1px, @blur: 1px, @color: #fff)	{
+	text-shadow: @hor @vert @blur @color;
+}
+.vis 	{display: block;}
+.white 	{color: #fff;}
