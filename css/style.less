@@ -17,6 +17,13 @@
 	.margin(top, 20px);
 	.paddings(20px);
 	.rounded(4px);
+	h3 {
+		.inline-block;
+		.margin(right, 20px);
+	}
+	a {
+		font-size: 16px;
+	}
 }
 
 #task-list	{
@@ -24,23 +31,29 @@
 	.margin(bottom, 0);
 	.completed-task-item	{
 		font-weight: bold;
+		text-decoration: line-through;
     	background: #f5f5f5;
     	color: #999;
 	}
 	.task-item	{
 		font-weight: bold;
-		.interactive;
-		.paddings(0);
 		&:hover	{
 			background-color: #f5f5f5;
-		}
-		a {
-			display: block;
-			width: 100%;
-			.paddings(10px, 15px);
-			&:hover {
-				text-decoration: none;
+			button {
+				.vis;
 			}
+		}
+		.task-text	{
+			width: 90%;
+		}
+		.task-buttons	{
+			position: absolute;
+			right: 15px;
+			top: 10px;
+		}
+		button {
+			.invis;
+			.margin(left, 5px);
 		}
 	}
 }
@@ -103,6 +116,7 @@ footer	{
 }
 .interactive	{cursor: pointer;}
 .invis	{display: none;}
+.inline-block {display: inline-block;}
 .fleft	{float: left;}
 .fright	{float: right;}
 .font-sm	{

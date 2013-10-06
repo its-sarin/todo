@@ -37,16 +37,29 @@
         <div id="task-area">
           <div>   
             <input type="text" class="form-control input-lg" ng-model="todo" ng-keydown="addTask($event)" placeholder="enter a task" autofocus>
-            <h3>tasks</h3>
+            
+            <h3>incomplete tasks</h3>
             <ul id="task-list" class="list-group">
               <li class="list-group-item task-item" ng-animate="'animate'" ng-repeat="task in tasks | filter:searchText track by task.id ">
-                <a ng-mouseup="removeTask($index)">{{task.task}}</a>
+                <div class="task-text">
+                  {{task.task}}
+                </div>
+                <div class="task-buttons">
+                  <button type="button" class="btn btn-sm btn-success pull-right" ng-mouseup="completeTask($index)"><span class="glyphicon glyphicon-ok"></span></button>
+                  <button type="button" class="btn btn-sm btn-danger pull-right" ng-mouseup="removeTask($index)"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
               </li>
             </ul>
-            <h3>completed tasks</h3>
+
+            <h3>completed tasks</h3><a ng-show="completedTasks.length > 0" ng-click="clearCompletedTasks($event)" href="#">clear</a>
             <ul id="task-list" class="list-group">
-              <li class="list-group-item completed-task-item" ng-animate="'animate'" ng-repeat="completedTask in completedTasks | filter:searchText track by completedTask.id">
-                {{completedTask.task}}
+              <li class="list-group-item task-item completed-task-item" ng-animate="'animate'" ng-repeat="completedTask in completedTasks | filter:searchText track by completedTask.id">
+                <div class="task-text">
+                  {{completedTask.task}} 
+                </div>
+                <div class="task-buttons">
+                  <span class="glyphicon glyphicon-ok-sign pull-right"></span>
+                </div>
               </li>
             </ul>
           </div>
