@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/animate.css" rel="stylesheet" media="screen">
     <link href="css/style.css" rel="stylesheet" media="screen">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
@@ -32,16 +31,18 @@
       <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
         <div id="task-area">
           <div ng-controller="TaskCtrl">      
-            <input type="text" class="form-control input-lg" ng-keydown="addTask($event)" ng-model="todo" placeholder="enter a task" autofocus>
+            <input type="text" class="form-control input-lg" ng-model="todo" ng-keydown="addTask($event)" placeholder="enter a task" autofocus>
             <ul id="task-list" class="list-group">
-              <li class="list-group-item task-item" ng-animate="'animate'" ng-repeat="task in tasks track by $index">
-                <a ng-click="removeTask($index)">{{task.task}}</a>
+              <li class="list-group-item task-item" ng-animate="'animate'" ng-repeat="task in tasks track by task.id">
+                <a ng-mouseup="removeTask($index)">{{task.task}}</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
+
+    <footer></footer>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/controllers/taskctrl.js"></script>
