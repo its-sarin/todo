@@ -1,39 +1,42 @@
-app.controller('TaskCtrl', ['$scope', 'angularFire', function ($scope, angularFire) {
-	var tasksRef = new Firebase('https://tonyrecchia.firebaseio.com/lists/demolist/incomplete');
+app.controller('TaskCtrl', ['$scope', '$location', 'angularFire', function ($scope, $location, angularFire) {	
+	var listId = $location.path();
+	console.log(listId);
+
+	var tasksRef = new Firebase('https://tonyrecchia.firebaseio.com/lists' +listId + '/incomplete');
 	$scope.tasks = [];
 	angularFire(tasksRef, $scope, "tasks");
 
-	var completedTasksRef = new Firebase('https://tonyrecchia.firebaseio.com/lists/demolist/completed');
+	var completedTasksRef = new Firebase('https://tonyrecchia.firebaseio.com/lists' + listId + '/completed');
 	$scope.completedTasks = [];		
 	angularFire(completedTasksRef, $scope, "completedTasks");
 
-	var newTodo = {};	
+	var newTodo = {};
 
-	
-
-	$scope.addTask = function(e)	{
-		if (e.keyCode != 13) return;
-		console.log(e.srcElement.value);
+	// Adds a task to $scope.tasks and attaches a timestamped id
+	$scope.addTask = function(event)	{
+		if (event.keyCode != 13 || (/^ *$/.test(event.srcElement.value))) return;
 		
 		newTodo.value = $scope.todo;
 		newTodo.id = new Date().getUTCMilliseconds();
-		console.log(newTodo.id);
 		
 		$scope.tasks.push({task: newTodo.value, id: newTodo.id});
 		$scope.todo = "";
 	}
 
+	// Marks a task as complete and pushes it to $scope.completedTasks
 	$scope.completeTask = function(index)	{
 		$scope.tasks.splice(index, 1);
 		$scope.completedTasks.push(this.task);		
 	}
 
+	// Deletes a task from the list
 	$scope.removeTask = function(index)	{
 		$scope.tasks.splice(index, 1);
 	}
 
-	$scope.clearCompletedTasks = function(e)	{
-		e.preventDefault();
+	// Removes all archived completed tasks
+	$scope.clearCompletedTasks = function(event)	{
+		event.preventDefault();
 		$scope.completedTasks = [];
 	}
 }]);
