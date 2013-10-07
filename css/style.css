@@ -28,23 +28,26 @@
 #task-list {
   margin-bottom: 0;
 }
-#task-list .completed-task-item {
-  font-weight: bold;
-  text-decoration: line-through;
-  background: #f5f5f5;
-  color: #999;
-}
 #task-list .task-item {
   font-weight: bold;
-}
-#task-list .task-item:hover {
-  background-color: #f5f5f5;
-}
-#task-list .task-item:hover button {
-  display: block;
+  outline: none;
+  cursor: pointer;
 }
 #task-list .task-item .task-text {
-  width: 90%;
+  width: 80%;
+}
+@media (min-width: 1025px) {
+  #task-list .task-item .task-text {
+    width: 95%;
+  }
+}
+#task-list .task-item:hover,
+#task-list .task-item:focus {
+  background-color: #f5f5f5;
+}
+#task-list .task-item:hover button,
+#task-list .task-item:focus button {
+  display: block;
 }
 #task-list .task-item .task-buttons {
   position: absolute;
@@ -54,6 +57,16 @@
 #task-list .task-item button {
   display: none;
   margin-left: 5px;
+}
+#task-list .completed-task-item {
+  background: #f5f5f5;
+  color: #999;
+  cursor: default;
+  font-weight: bold;
+  text-decoration: line-through;
+}
+#task-list .completed-task-item .task-text {
+  width: 90%;
 }
 /*
 	Footer

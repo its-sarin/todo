@@ -28,22 +28,23 @@
 
 #task-list	{
 	.margin(bottom, 0);
-	.completed-task-item	{
-		font-weight: bold;
-		text-decoration: line-through;
-    	background: #f5f5f5;
-    	color: #999;
-	}
 	.task-item	{
 		font-weight: bold;
-		&:hover	{
+		outline: none;
+		.interactive;
+		.task-text	{
+			width: 80%;
+		}
+		@media (min-width: 1025px)	{
+			.task-text	{
+				width: 95%;
+			}
+		}
+		&:hover, &:focus	{
 			background-color: #f5f5f5;
 			button {
 				.vis;
 			}
-		}
-		.task-text	{
-			width: 90%;
 		}
 		.task-buttons	{
 			position: absolute;
@@ -53,6 +54,16 @@
 		button {
 			.invis;
 			.margin(left, 5px);
+		}
+	}
+	.completed-task-item	{
+		background: #f5f5f5;
+    	color: #999;
+    	cursor: default;
+		font-weight: bold;
+		text-decoration: line-through;
+		.task-text	{
+			width: 90%;
 		}
 	}
 }
