@@ -167,6 +167,12 @@ footer {
 .no-float {
   float: none;
 }
+.no-margin {
+  margin: 0;
+}
+.no-padding {
+  padding: 0;
+}
 .vis {
   display: block;
 }

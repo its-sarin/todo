@@ -14,11 +14,14 @@ app.controller('TaskCtrl', ['$scope', '$location', 'angularFire', function ($sco
 
 	// Adds a task to $scope.tasks and attaches a timestamped id
 	$scope.addTask = function(event)	{
-		if (event.keyCode != 13 || (/^ *$/.test(event.srcElement.value))) return;
+		var key = event.char || event.keyCode,	// Firefox support
+			target = event.target || event.srcElement;
+
+		if (key != 13 || (/^ *$/.test(target.value))) return;
 		
 		newTodo.value = $scope.todo;
-		newTodo.id = new Date().getUTCMilliseconds();
-		
+		newTodo.id = new Date().getUTCMilliseconds() + Math.floor(Math.random())*2;
+
 		$scope.tasks.push({task: newTodo.value, id: newTodo.id});
 		$scope.todo = "";
 	}
