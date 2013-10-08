@@ -64,7 +64,7 @@
                 </li>
               </ul>
 
-              <h3>completed tasks</h3><a ng-show="completedTasks.length > 0" ng-click="clearCompletedTasks($event)" href="#">clear</a>
+              <div ng-show="completedTasks.length > 0"><h3>completed tasks</h3><a ng-click="clearCompletedTasks($event)" href="#">clear</a></div>
               <ul id="task-list" class="list-group">
                 <li class="list-group-item task-item completed-task-item" ng-animate="'animate'" ng-repeat="completedTask in completedTasks | filter:searchText track by completedTask.id">
                   <div class="task-text">
