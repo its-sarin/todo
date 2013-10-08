@@ -1,4 +1,5 @@
-app.controller('TaskCtrl', ['$scope', '$location', 'angularFire', function ($scope, $location, angularFire) {	
+app.controller('TaskCtrl', ['$scope', '$location', 'angularFire', '$window', function ($scope, $location, angularFire, $window) {	
+	console.log($location.host());
 	var listId = $location.path();
 	console.log(listId);
 
@@ -11,6 +12,13 @@ app.controller('TaskCtrl', ['$scope', '$location', 'angularFire', function ($sco
 	angularFire(completedTasksRef, $scope, "completedTasks");
 
 	var newTodo = {};
+
+	$scope.createNewList = function()	{
+		if (/^ *$/.test($scope.newListName)) return;
+
+		$window.open('/#' + $scope.newListName);
+		$scope.newListName = '';
+	}
 
 	// Adds a task to $scope.tasks and attaches a timestamped id
 	$scope.addTask = function(event)	{
