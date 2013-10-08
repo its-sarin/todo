@@ -31,7 +31,9 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 	$scope.createNewList = function()	{
 		if (/^ *$/.test($scope.newListName)) return;
 
-		$window.open('/#' + $scope.newListName);
+		var list = ($scope.newListName + '-' + new Date().getUTCMilliseconds() + new Date().getUTCDay() + (Math.floor(Math.random()*10)));
+
+		$window.open('/#' + list);
 		$scope.newListName = '';
 	}
 
@@ -43,7 +45,7 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 		if (key != 13 || (/^ *$/.test(target.value))) return;
 		
 		newTodo.value = $scope.todo;
-		newTodo.id = new Date().getUTCMilliseconds() + Math.floor(Math.random())*2;
+		newTodo.id = new Date().getUTCMilliseconds() + (Math.floor(Math.random()*10));
 
 		$scope.tasks.push({task: newTodo.value, id: newTodo.id});
 		$scope.todo = "";
