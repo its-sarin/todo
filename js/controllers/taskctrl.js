@@ -31,8 +31,14 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 	$scope.createNewList = function()	{
 		if (/^ *$/.test($scope.newListName)) return;
 
-		var list = ($scope.newListName + '-' + new Date().getUTCMilliseconds() + new Date().getUTCDay() + (Math.floor(Math.random()*10)));
+		// Filters out symbols and whitespace and builds list name
+		var input = $scope.newListName.replace(/[^\w]/gi, ''),
+			ms = new Date().getUTCMilliseconds(),
+			dt = new Date().getUTCDay(),
+			rn = Math.floor(Math.random()*10);
+			list = input + '-' + ms + dt + rn;
 
+		// Open new list in new window
 		$window.open('/#' + list);
 		$scope.newListName = '';
 	}
