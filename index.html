@@ -51,7 +51,7 @@
    
               <input type="text" class="form-control input-lg" ng-model="todo" ng-keydown="addTask($event)" placeholder="enter a task" autofocus>
               
-              <h3>incomplete tasks</h3>
+              <div ng-show="tasks.length > 0"><h3>incomplete tasks</h3></div>
               <ul id="task-list" class="list-group">
                 <li class="list-group-item task-item" ng-animate="'animate'" ng-repeat="task in tasks | filter:searchText track by task.id" tabindex="{{$index}}">
                   <div class="task-text">
