@@ -63,6 +63,12 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 		$scope.completedTasks.push(this.task);		
 	}
 
+	$scope.undoComplete = function(index)	{
+		console.log('click!');
+		$scope.completedTasks.splice(index, 1);
+		$scope.tasks.push(this.completedTask);
+	}
+
 	// Deletes a task from the list
 	$scope.removeTask = function(index)	{
 		$scope.tasks.splice(index, 1);
