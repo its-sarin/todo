@@ -1,15 +1,24 @@
-app.controller('TaskCtrl', ['$scope', '$location', 'angularFire', '$window', function ($scope, $location, angularFire, $window) {	
+app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', '$window', 'authService', function ($scope, $rootScope, $location, angularFire, $window, authService) {	
 	console.log($location.host());
+
 	var listId = $location.path();
 	console.log(listId);
 
-	var tasksRef = new Firebase('https://tonyrecchia.firebaseio.com/lists' +listId + '/incomplete');
+	var tasksRef = new Firebase('https://listify.firebaseio.com/lists' +listId + '/incomplete');
 	$scope.tasks = [];
 	angularFire(tasksRef, $scope, "tasks");
 
-	var completedTasksRef = new Firebase('https://tonyrecchia.firebaseio.com/lists' + listId + '/completed');
+	var completedTasksRef = new Firebase('https://listify.firebaseio.com/lists' + listId + '/completed');
 	$scope.completedTasks = [];		
 	angularFire(completedTasksRef, $scope, "completedTasks");
+
+	$rootScope.$on("login", function(event, user) {		
+        var userRef = new Firebase('https://listify.firebaseio.com/lists' +listId + '/users/')
+        console.log(user.uid);
+        $scope.users = [];
+        $scope.users.push({user: user.uid});
+		angularFire(userRef, $scope, "users");        
+    });
 
 	var newTodo = {};
 

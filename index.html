@@ -20,7 +20,9 @@
     <![endif]-->
   </head>
   <body>
-
+    <!-- scope: LoginCtrl -->
+    <div ng-controller="LoginCtrl"></div>
+    <!-- end scope: LoginCtrl -->
     <!-- scope: TaskCtrl -->
     <div ng-controller="TaskCtrl">
       <nav id="top-nav" class="navbar navbar-inverse" role="navigation">
@@ -44,7 +46,7 @@
       </nav>
 
       <div class="container no-padding">
-        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-1 no-padding">
+        <div class="col-lg-6 col-md-7 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-2 col-sm-offset-2 no-padding">
           <div id="task-area">
    
               <input type="text" class="form-control input-lg" ng-model="todo" ng-keydown="addTask($event)" placeholder="enter a task" autofocus>
@@ -82,7 +84,10 @@
 
     <footer></footer>
 
+    <!-- services -->
+    <script src="js/services/authservice.js"></script>
     <!-- controllers -->
+    <script src="js/controllers/loginctrl.js"></script>
     <script src="js/controllers/taskctrl.js"></script>
     <!-- plugins -->
     
