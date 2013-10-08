@@ -68,10 +68,10 @@
               <ul id="task-list" class="list-group">
                 <li class="list-group-item task-item completed-task-item" ng-animate="'animate'" ng-repeat="completedTask in completedTasks | filter:searchText track by completedTask.id">
                   <div class="task-text">
-                    {{completedTask.task}} 
+                    <span class="glyphicon glyphicon-ok-sign"></span> {{completedTask.task}} 
                   </div>
                   <div class="task-buttons">
-                    <span class="glyphicon glyphicon-ok-sign pull-right"></span>
+                    
                   </div>
                 </li>
               </ul>
