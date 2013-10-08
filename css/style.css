@@ -6,6 +6,9 @@
   -moz-border-radius: 0;
   border-radius: 0;
 }
+.navbar-inverse .navbar-brand {
+  color: #40B2FD;
+}
 /* 
 	Task list
 */
