@@ -4,7 +4,7 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 	// Store location path to use for creating list in database
 	var listId = $location.path();
 	console.log(listId);
-	$scope.list = listId.replace(/[^\w]/gi, '');
+	$scope.list = listId.replace(/[^\w\s]/gi, '');
 
 	// Create Firebase reference to 'incomplete' items
 	var tasksRef = new Firebase('https://listify.firebaseio.com/lists' + listId + '/incomplete');
