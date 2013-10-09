@@ -33,7 +33,7 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 		if (/^ *$/.test($scope.newListName)) return;
 
 		// Filters out symbols and whitespace and builds list name
-		var input = $scope.newListName.replace(/[^\w]/gi, ''),
+		var input = $scope.newListName.replace(/[^\w\s]/gi, ''),
 			ms = new Date().getUTCMilliseconds(),
 			dt = new Date().getUTCDay(),
 			rn = Math.floor(Math.random()*10);
