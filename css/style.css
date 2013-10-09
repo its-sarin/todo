@@ -18,9 +18,9 @@
 #task-area {
   background-color: #cccccc;
   font-size: 150%;
-  -webkit-box-shadow: 0 8px 6px -6px #333333;
-  -moz-box-shadow: 0 8px 6px -6px #333333;
-  box-shadow: 0 8px 6px -6px #333333;
+  -webkit-box-shadow: 0 10px 40px #555555;
+  -moz-box-shadow: 0 10px 40px #555555;
+  box-shadow: 0 10px 40px #555555;
   margin-top: 20px;
   padding: 20px;
   -webkit-border-radius: 4px;
