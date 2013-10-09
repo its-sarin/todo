@@ -1,6 +1,9 @@
 /*
 	Navigation
 */
+#list-name {
+  text-align: center;
+}
 #top-nav {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -76,6 +79,9 @@
 }
 #task-list .completed-task-item .task-text {
   width: 90%;
+}
+#task-list .completed-task-item .task-buttons {
+  top: 11px;
 }
 /*
 	Footer

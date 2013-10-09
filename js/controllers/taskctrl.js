@@ -4,9 +4,10 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 	// Store location path to use for creating list in database
 	var listId = $location.path();
 	console.log(listId);
+	$scope.list = listId.replace(/[^\w]/gi, '');
 
 	// Create Firebase reference to 'incomplete' items
-	var tasksRef = new Firebase('https://listify.firebaseio.com/lists' +listId + '/incomplete');
+	var tasksRef = new Firebase('https://listify.firebaseio.com/lists' + listId + '/incomplete');
 	$scope.tasks = [];
 	angularFire(tasksRef, $scope, "tasks");
 
@@ -17,7 +18,7 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 
 	// Create Firebase reference to 'users' if user authenticates
 	$rootScope.$on("login", function(event, user) {		
-        var userRef = new Firebase('https://listify.firebaseio.com/lists' +listId + '/users/')
+        var userRef = new Firebase('https://listify.firebaseio.com/lists' + listId + '/users/')
         console.log(user.uid);
         $scope.users = [];
         $scope.users.push({user: user.uid});
