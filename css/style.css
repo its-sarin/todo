@@ -18,7 +18,7 @@
 	Task list
 */
 #task-area {
-  background-color: #cccccc;
+  background-color: #343434;
   font-size: 150%;
   -webkit-box-shadow: 0 10px 40px #555555;
   -moz-box-shadow: 0 10px 40px #555555;
@@ -30,6 +30,7 @@
   border-radius: 4px;
 }
 #task-area h3 {
+  color: #fff;
   font-weight: lighter;
   display: inline-block;
   margin-right: 20px;

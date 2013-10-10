@@ -2,31 +2,28 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 	console.log($location.host());
 
 	// Store location path to use for creating list in database
-	var listId = $location.path();
+	var listId = $location.path().replace(/[^\w\s]/gi, '');
 	console.log(listId);
-	$scope.list = listId.replace(/[^\w\s]/gi, '');
+	$scope.list = listId;
 
 	// Create Firebase reference to 'incomplete' items
-	var tasksRef = new Firebase('https://listify.firebaseio.com/lists' + listId + '/incomplete');
+	var tasksRef = new Firebase('https://listify.firebaseio.com/lists/' + listId + '/incomplete');
 	$scope.tasks = [];
 	angularFire(tasksRef, $scope, "tasks");
 
 	// Create Firebase reference to 'completed' items
-	var completedTasksRef = new Firebase('https://listify.firebaseio.com/lists' + listId + '/completed');
+	var completedTasksRef = new Firebase('https://listify.firebaseio.com/lists/' + listId + '/completed');
 	$scope.completedTasks = [];		
 	angularFire(completedTasksRef, $scope, "completedTasks");
 
 	// Create Firebase reference to 'users' if user authenticates
 	$rootScope.$on("login", function(event, user) {		
-        var userRef = new Firebase('https://listify.firebaseio.com/lists' + listId + '/users/')
+        var userRef = new Firebase('https://listify.firebaseio.com/lists/' + listId + '/users/')
         console.log(user.uid);
         $scope.users = [];
         $scope.users.push({user: user.uid});
 		angularFire(userRef, $scope, "users");        
     });
-
-	var newTodo = {};
-	$scope.newListName = '';
 
 	// Creates a new list
 	$scope.createNewList = function()	{
@@ -39,6 +36,8 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 			rn = Math.floor(Math.random()*10);
 			list = input + '-' + ms + dt + rn;
 
+		var authRef = new Firebase('https://listify.firebaseio.com/lists/' + list + '/auth');
+		authRef.set({authorized: 'true'});
 		// Open new list in new window
 		$window.open('/#' + list);
 		$scope.newListName = '';
@@ -47,7 +46,8 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 	// Adds a task to $scope.tasks and attaches a timestamped id
 	$scope.addTask = function(event)	{
 		var key = event.char || event.keyCode,	// Firefox support
-			target = event.target || event.srcElement;
+			target = event.target || event.srcElement,
+			newTodo = {};
 
 		if (key != 13 || (/^ *$/.test(target.value))) return;
 		
@@ -65,7 +65,6 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 	}
 
 	$scope.undoComplete = function(index)	{
-		console.log('click!');
 		$scope.completedTasks.splice(index, 1);
 		$scope.tasks.push(this.completedTask);
 	}
