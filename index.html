@@ -25,22 +25,29 @@
     <!-- end scope: LoginCtrl -->
     <!-- scope: TaskCtrl -->
     <div ng-controller="TaskCtrl">
-      <nav id="top-nav" class="navbar navbar-inverse" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
+      <nav id="top-nav" class="navbar navbar-inverse" role="navigation" ng-controller="NavCtrl">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">listify.io</a>          
+          <a class="navbar-brand" href="#">listify.io</a>
+          <button type="button" class="navbar-toggle" ng-click="toggleNav();">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>      
         </div>
-        <div class="navbar-form navbar-left">
-          <div class="form-group">
-            <input type="text" class="form-control" ng-model="newListName" placeholder="new list">
+        <div class="collapse navbar-collapse" id="navbar-ex1-collapse" ng-show="collapsed" ng-animate="'animate'">
+          <div class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="newListName" placeholder="new list">
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-primary" ng-click="createNewList()"><span class="glyphicon glyphicon-new-window"></span></button>
+            </div>
           </div>
-          <div class="form-group">
-            <button type="button" class="btn btn-primary" ng-click="createNewList()"><span class="glyphicon glyphicon-new-window"></span></button>
-          </div>
-        </div>
-        <div class="navbar-form navbar-right">
-          <div class="form-group">
-            <input type="text" class="form-control" ng-model="searchText" placeholder="search">
+          <div class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="searchText" placeholder="search">
+            </div>
           </div>
         </div>
       </nav>
@@ -90,6 +97,7 @@
     <!-- controllers -->
     <script src="js/controllers/loginctrl.js"></script>
     <script src="js/controllers/taskctrl.js"></script>
+    <script src="js/controllers/navctrl.js"></script>
     <!-- plugins -->
     
   </body>
