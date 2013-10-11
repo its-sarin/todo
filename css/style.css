@@ -1,8 +1,16 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  background: url('../images/noise.png') repeat;
+}
 /*
 	Navigation
 */
 #list-name {
   text-align: center;
+  text-shadow: 2px 2px 5px #999;
   overflow-wrap: break-word;
 }
 #top-nav {
