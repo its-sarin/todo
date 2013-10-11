@@ -4,7 +4,8 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 	// Store location path to use for creating list in database
 	var listId = $location.path()
 	console.log(listId);
-	$scope.list = listId.replace(/[^\w\s]/gi, '');;
+	$scope.list = listId.split('-',1).toString().replace(/[^\w\s]/gi, '');
+
 
 	// Create Firebase reference to 'incomplete' items
 	var tasksRef = new Firebase('https://listify.firebaseio.com/lists/' + listId + '/incomplete');
@@ -30,7 +31,7 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 		if (/^ *$/.test($scope.newListName)) return;
 
 		// Filters out symbols and whitespace and builds list name
-		var input = $scope.newListName.replace(/[^\w\s]/gi, ''),
+		var input = $scope.newListName.replace(/-/g,' ').replace(/[^\w\s]/gi, ''),
 			ms = new Date().getUTCMilliseconds(),
 			dt = new Date().getUTCDay(),
 			rn = Math.floor(Math.random()*10);
