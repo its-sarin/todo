@@ -1,9 +1,22 @@
+@font-face {
+  font-family: 'SansitaOneRegular';
+  src: url('../fonts/sansitaone.eot');
+  src: url('../fonts/sansitaone.eot') format('embedded-opentype'), url('../fonts/sansitaone.woff') format('woff'), url('../fonts/sansitaone.ttf') format('truetype'), url('../fonts/sansitaone.svg#SansitaOneRegular') format('svg');
+}
 html,
 body {
   height: 100%;
 }
 body {
   background: url('../images/noise.png') repeat;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'SansitaOneRegular', 'Helvetica', 'Arial', sans-serif;
 }
 /*
 	Navigation
@@ -21,6 +34,9 @@ body {
 }
 .navbar-inverse .navbar-brand {
   color: #40B2FD;
+  font-family: 'SansitaOneRegular', 'Helvetica', 'Arial', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
 }
 /* 
 	Task list
