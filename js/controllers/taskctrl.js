@@ -1,4 +1,4 @@
-app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', '$window', 'authService', function ($scope, $rootScope, $location, angularFire, $window, authService) {	
+app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 'authService', function ($scope, $rootScope, $location, angularFire, authService) {	
 	console.log($location.host());
 
 	// Store location path to use for creating list in database
