@@ -11,4 +11,4 @@ app.service('authService', ["$rootScope", function ($rootScope) {
             $rootScope.$emit("logout");
         }
     });
-}])
+}]);
