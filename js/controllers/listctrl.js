@@ -11,7 +11,7 @@ app.controller('ListCtrl', ['$scope', '$window', 'angularFire', function ($scope
 			list = input + '-' + ms + dt + rn;
 
 		var authRef = new Firebase('https://listify.firebaseio.com/lists/' + list + '/auth');
-		authRef.set({authorized: 'true'});
+		authRef.set({authorized: 'true', time: new Date().toString()});
 		// Open new list in new window
 		$window.open('/#' + list);
 		$scope.newListName = '';
