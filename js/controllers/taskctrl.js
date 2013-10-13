@@ -35,9 +35,15 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 		if (key != 13 || (/^ *$/.test(target.value))) return;
 		
 		newTodo.value = $scope.todo;
+		newTodo.time = new Date();
 		newTodo.id = new Date().getUTCMilliseconds() + (Math.floor(Math.random()*10));
+		console.log(newTodo.time.toString());
 
-		$scope.tasks.push({task: newTodo.value, id: newTodo.id});
+		$scope.tasks.push({
+			task: newTodo.value, 
+			id: newTodo.id,
+			time: newTodo.time.toString()
+		});
 		$scope.todo = "";
 	}
 
