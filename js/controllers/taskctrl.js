@@ -63,6 +63,11 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 		$scope.tasks.splice(index, 1);
 	}
 
+	// Deletes a task from the list
+	$scope.removeCompletedTask = function(index)	{
+		$scope.completedTasks.splice(index, 1);
+	}
+
 	// Removes all archived completed tasks
 	$scope.clearCompletedTasks = function(event)	{
 		event.preventDefault();

@@ -71,7 +71,9 @@ h6 {
   cursor: pointer;
 }
 #task-list .task-item .task-text {
+  overflow-wrap: break-word;
   width: 80%;
+  word-wrap: break-word;
 }
 #task-list .task-item .task-text .glyphicon {
   top: 3px;
@@ -103,9 +105,6 @@ h6 {
   color: #999;
   font-weight: bold;
   text-decoration: line-through;
-}
-#task-list .completed-task-item .task-text {
-  width: 90%;
 }
 #task-list .completed-task-item .task-buttons {
   top: 11px;
