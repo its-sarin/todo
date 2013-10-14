@@ -13,7 +13,7 @@ app.controller('ListCtrl', ['$scope', '$window', 'angularFire', function ($scope
 		var authRef = new Firebase('https://listify.firebaseio.com/lists/' + list + '/auth');
 		authRef.set({authorized: 'true', time: new Date().toString()});
 		// Open new list in new window
-		$window.open('/#' + list);
+		$window.open('/lists/#' + list);
 		$scope.newListName = '';
 	}
 }]);

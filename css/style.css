@@ -9,6 +9,8 @@ body {
 }
 body {
   background: url('../images/noise.png') repeat;
+  padding-top: 50px;
+  padding-bottom: 20px;
 }
 h1,
 h2,

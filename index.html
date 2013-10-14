@@ -1,110 +1,88 @@
 <!DOCTYPE html>
-<html ng-app="todoApp" ng-controller="TaskCtrl">
+<html lang="en">
   <head>
-    <title ng-bind="'listify.io - ' + list">listify.io</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/style.css" rel="stylesheet" media="screen">
-   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>listify.io</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
     <script src='https://cdn.firebase.com/v0/firebase.js'></script>
     <script src='https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.min.js'></script>
     <script src='https://cdn.firebase.com/v0/firebase-simple-login.js'></script>  
-    <script src="js/app/app.js"></script>
+    <script src="js/app/homeapp.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
   </head>
+
   <body>
     <!-- scope: LoginCtrl -->
     <div ng-controller="LoginCtrl"></div>
     <!-- end scope: LoginCtrl -->
-    <!-- scope: TaskCtrl -->
-    <div>
-      <nav id="top-nav" class="navbar navbar-inverse" role="navigation">
-        <!-- scope: NavCtrl -->
-        <div class="navbar-header" ng-controller="NavCtrl">
-          <a class="navbar-brand" href="#">listify.io</a>
-          <button type="button" class="navbar-toggle" ng-click="toggleNav()">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>      
-        </div>
-        <!-- end scope: NavCtrl -->
-        <div class="collapse navbar-collapse" id="navbar-ex1-collapse" ng-animate="'animate'">
-          <!-- scope: ListCtrl -->
-          <div class="navbar-form navbar-left" ng-controller="ListCtrl">
-            <div class="form-group">
-              <input type="text" class="form-control" ng-model="newListName" placeholder="new list">
-            </div>
-            <div class="form-group">
-              <button type="button" class="btn btn-primary" ng-click="createNewList()"><span class="glyphicon glyphicon-new-window"></span></button>
-            </div>
+    <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">listify.io</a>    
+      </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container" ng-app="homeApp">
+        <h1>Listify your life!</h1>
+        <p><strong>Listify.io</strong> is a fast and easy way to organize your life via completely free (no signup or login necessary), easy-to-maintain online lists that are entirely collaborative, allowing you to share your lists with friends, family, or a significant other simply by sharing the link to your list. Perfect for shopping, planning, coordinating, and organizing, <strong>Listify.io</strong> lists work great both at home and on your mobile device.</p> 
+        <p>Getting started is as easy as creating your first list:</p>
+        <!-- scope: ListCtrl -->
+        <div class="form-inline" ng-controller="ListCtrl">
+          <div class="form-group">
+            <input type="text" class="form-control input-lg" ng-model="newListName" placeholder="new list">
           </div>
-          <!-- end scope: ListCtrl -->
-          <div class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" class="form-control" ng-model="searchText" placeholder="search">
-            </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-lg btn-primary" ng-click="createNewList()"><span class="glyphicon glyphicon-new-window"></span></button>
           </div>
         </div>
-      </nav>
-
-      <div class="container no-padding">        
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2 col-sm-offset-2">
-          <h1 id="list-name">{{list}}</h1>
-          <div id="task-area">
-   
-              <input type="text" class="form-control input-lg" ng-model="todo" ng-keydown="addTask($event)" placeholder="enter a task" autofocus>
-              
-              <div ng-show="tasks.length > 0"><h3>to do</h3></div>
-              <ul id="task-list" class="list-group">
-                <li class="list-group-item task-item" ng-animate="'animate'" ng-repeat="task in tasks | filter:searchText track by task.id" tabindex="{{$index}}">
-                  <div class="task-text">
-                    {{task.task}}
-                  </div>
-                  <div class="task-buttons">
-                    <button type="button" class="btn btn-sm btn-success pull-right" ng-mouseup="completeTask($index)"><span class="glyphicon glyphicon-ok"></span></button>
-                    <button type="button" class="btn btn-sm btn-danger pull-right" ng-mouseup="removeTask($index)"><span class="glyphicon glyphicon-remove"></span></button>
-                  </div>
-                </li>
-              </ul>
-
-              <div ng-show="completedTasks.length > 0"><h3>completed</h3><a ng-click="clearCompletedTasks($event)" href="#">clear</a></div>
-              <ul id="task-list" class="list-group">
-                <li class="list-group-item task-item completed-task-item" ng-animate="'animate'" ng-repeat="completedTask in completedTasks | filter:searchText track by completedTask.id" tabindex="{{tasks.length + $index}}">
-                  <div class="task-text">
-                    <span class="glyphicon glyphicon-ok-sign"></span> {{completedTask.task}}
-                  </div>
-                  <div class="task-buttons">
-                    <button type="button" class="btn btn-sm btn-primary pull-right" ng-mouseup="undoComplete($index)"><span class="glyphicon glyphicon-repeat"></span></button>
-                    <button type="button" class="btn btn-sm btn-danger pull-right" ng-mouseup="removeCompletedTask($index)"><span class="glyphicon glyphicon-remove"></span></button>
-                  </div>
-                </li>
-              </ul>
-
-          </div>
-        </div>
+        <!-- end scope: ListCtrl -->
       </div>
     </div>
-    <!-- end scope: TaskCtrl -->
 
-    <footer></footer>
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-lg-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        </div>
+        <div class="col-lg-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+       </div>
+        <div class="col-lg-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        </div>
+      </div>
 
-    
+      <hr>
+
+      <footer>
+        <p>&copy; Tony Recchia 2013</p>
+      </footer>
+    </div> <!-- /container -->
+
+
     <!-- services -->
     <script src="js/services/authservice.js"></script>
     <!-- controllers -->
     <script src="js/controllers/loginctrl.js"></script>
-    <script src="js/controllers/taskctrl.js"></script>
-    <script src="js/controllers/navctrl.js"></script>
     <script src="js/controllers/listctrl.js"></script>
-
   </body>
 </html>
