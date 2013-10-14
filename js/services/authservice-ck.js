@@ -1,0 +1,1 @@
+app.service("authService",["$rootScope",function(e){var t=new Firebase("https://listify.firebaseio.com");this.auth=new FirebaseSimpleLogin(t,function(t,n){n?e.$emit("login",n):t?e.$emit("loginError",t):e.$emit("logout")})}]);
