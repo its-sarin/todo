@@ -24,9 +24,15 @@ h6 {
 	Navigation
 */
 #list-name {
+  background: #eeeeee;
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow-wrap: break-word;
+  padding-top: 30px;
+  padding-bottom: 70px;
   text-align: center;
   text-shadow: 2px 2px 5px #999;
-  overflow-wrap: break-word;
+  width: 100%;
 }
 #top-nav {
   overflow: hidden;
@@ -49,7 +55,7 @@ h6 {
   -webkit-box-shadow: 0 10px 40px #555555;
   -moz-box-shadow: 0 10px 40px #555555;
   box-shadow: 0 10px 40px #555555;
-  margin-top: 20px;
+  margin-top: -40px;
   padding: 20px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
