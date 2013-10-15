@@ -1,0 +1,1 @@
+app.controller("LoginCtrl",["$scope","$rootScope","authService",function(e,t,n){n.auth.login("anonymous",{rememberMe:!0});t.$on("login",function(e,t){});t.$on("loginError",function(e,t){});t.$on("logout",function(e){})}]);

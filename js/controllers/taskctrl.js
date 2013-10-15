@@ -1,9 +1,7 @@
 app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 'authService', function ($scope, $rootScope, $location, angularFire, authService) {	
-	console.log($location.host());
 
 	// Store location path to use for creating list in database
 	var listId = $location.path()
-	console.log(listId);
 	$scope.list = listId.split('-',1).toString().replace(/[^\w\s]/gi, '');
 
 
@@ -20,7 +18,6 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 	// Create Firebase reference to 'users' if user authenticates
 	$rootScope.$on("login", function(event, user) {		
         var userRef = new Firebase('https://listify.firebaseio.com/lists/' + listId + '/users/')
-        console.log(user.uid);
         $scope.users = [];
         $scope.users.push({user: user.uid});
 		angularFire(userRef, $scope, "users");        
@@ -37,7 +34,6 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 		newTodo.value = $scope.todo;
 		newTodo.time = new Date();
 		newTodo.id = new Date().getUTCMilliseconds() + (Math.floor(Math.random()*10));
-		console.log(newTodo.time.toString());
 
 		$scope.tasks.push({
 			task: newTodo.value, 
