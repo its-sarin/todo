@@ -1,4 +1,4 @@
-var app = angular.module('todoApp', ['firebase']);
+var app = angular.module('todoApp', ['ui', 'firebase']);
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 	
