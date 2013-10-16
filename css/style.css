@@ -24,12 +24,12 @@ h6 {
 	Navigation
 */
 #list-name {
-  background: #eeeeee;
+  background: #8cd0fd;
   margin-top: 0;
   margin-bottom: 0;
   overflow-wrap: break-word;
-  padding-top: 30px;
-  padding-bottom: 70px;
+  padding-top: 10px;
+  padding-bottom: 50px;
   text-align: center;
   width: 100%;
 }
