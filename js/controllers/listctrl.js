@@ -7,7 +7,7 @@ app.controller('ListCtrl', ['$scope', '$window', 'angularFire', function ($scope
 		var input = $scope.newListName.replace(/-/g,' ').replace(/[^\w\s]/gi, ''),
 			ms = new Date().getUTCMilliseconds(),
 			dt = new Date().getUTCDay(),
-			rn = Math.floor(Math.random()*10);
+			rn = Math.floor(Math.random()*100);
 			list = input + '-' + ms + dt + rn;
 
 		var authRef = new Firebase('https://listify.firebaseio.com/lists/' + list + '/auth');
