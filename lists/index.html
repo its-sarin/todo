@@ -58,19 +58,17 @@
           </div>
         </div>
       </nav>
-      <h1 id="list-name" ng-bind="list"></h1>
+      <h1 id="list-name" ng-bind="list">list</h1>
       <div class="container no-padding">        
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2 col-sm-offset-2 no-padding"> 
           <div id="task-area">
    
               <input type="text" class="form-control input-lg" ng-model="todo" ng-keydown="addTask($event)" placeholder="enter a task" autofocus>
               
-              <div ng-show="tasks.length > 0"><h3>to do</h3></div>
-              <ul id="task-list" class="list-group" ui-sortable ng-model="tasks">
+              <div ng-show="tasks.length > 0" ng-cloak><h3>to do</h3></div>
+              <ul id="task-list" class="list-group" ui-sortable ng-model="tasks" ng-cloak>
                 <li class="list-group-item task-item" ng-animate="'animate'" ng-repeat="task in tasks | filter:searchText track by task.id" tabindex="{{$index}}">
-                  <div class="task-text">
-                    {{task.task}}
-                  </div>
+                  <div class="task-text" ng-bind="task.task"></div>
                   <div class="task-buttons">
                     <button type="button" class="btn btn-sm btn-success pull-right" ng-mouseup="completeTask($index)"><span class="glyphicon glyphicon-ok"></span></button>
                     <button type="button" class="btn btn-sm btn-danger pull-right" ng-mouseup="removeTask($index)"><span class="glyphicon glyphicon-remove"></span></button>
@@ -78,11 +76,11 @@
                 </li>
               </ul>
 
-              <div ng-show="completedTasks.length > 0"><h3>completed</h3><a ng-click="clearCompletedTasks($event)" href="#">clear</a></div>
-              <ul id="task-list" class="list-group">
+              <div ng-show="completedTasks.length > 0" ng-cloak><h3>completed</h3><a ng-click="clearCompletedTasks($event)" href="#">clear</a></div>
+              <ul id="task-list" class="list-group" ng-cloak>
                 <li class="list-group-item task-item completed-task-item" ng-animate="'animate'" ng-repeat="completedTask in completedTasks | filter:searchText track by completedTask.id" tabindex="{{tasks.length + $index}}">
                   <div class="task-text">
-                    <span class="glyphicon glyphicon-ok-sign"></span> {{completedTask.task}}
+                    <span class="glyphicon glyphicon-ok-sign"></span> <span ng-bind="completedTask.task"></span>
                   </div>
                   <div class="task-buttons">
                     <button type="button" class="btn btn-sm btn-primary pull-right" ng-mouseup="undoComplete($index)"><span class="glyphicon glyphicon-repeat"></span></button>
