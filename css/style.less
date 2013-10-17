@@ -23,6 +23,11 @@ h1, h2, h3, h4, h5, h6	{
 	font-family: 'SansitaOneRegular', 'Helvetica', 'Arial', sans-serif;
 }
 
+input, input.form-control	{
+	font-size: 20px;
+	font-weight: lighter;
+}
+
 /*
 	Navigation
 */
@@ -61,21 +66,21 @@ h1, h2, h3, h4, h5, h6	{
 	.margin(top, -40px);
 	.paddings(20px);
 	.rounded(4px);
+	a {
+		font-size: 16px;
+	}
 	h3 {
 		color: #fff;
 		font-weight: lighter;
 		.inline-block;
 		.margin(right, 20px);
 	}
-	a {
-		font-size: 16px;
-	}
 }
 
 #task-list	{
 	.margin(bottom, 0);
 	.task-item	{
-		font-weight: bold;
+		font-weight: lighter;
 		outline: none;
 		.interactive;
 		.task-text	{
@@ -110,7 +115,6 @@ h1, h2, h3, h4, h5, h6	{
 	.completed-task-item	{
 		background: #f5f5f5;
     	color: #999;
-		font-weight: bold;
 		text-decoration: line-through;
 		.task-buttons	{
 			top: 11px;
