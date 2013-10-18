@@ -67,7 +67,7 @@
               
               <div ng-show="tasks.length > 0" ng-cloak><h3>to do</h3></div>
               <ul id="task-list" class="list-group" ui-sortable ng-model="tasks" ng-cloak>
-                <li class="list-group-item task-item" ng-animate="'animate'" ng-repeat="task in tasks | filter:searchText track by task.id" tabindex="{{$index}}">
+                <li class="list-group-item task-item" ng-animate="'animate'" ng-repeat="task in tasks | filter:{task:searchText} track by task.id" tabindex="{{$index}}">
                   <div class="task-text" ng-bind="task.task"></div>
                   <div class="task-buttons">
                     <button type="button" class="btn btn-sm btn-success pull-right" ng-mouseup="completeTask($index)"><span class="glyphicon glyphicon-ok"></span></button>
