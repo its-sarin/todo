@@ -20,10 +20,19 @@ h5,
 h6 {
   font-family: 'SansitaOneRegular', 'Helvetica', 'Arial', sans-serif;
 }
+hr {
+  border-top: 1px solid #bbb;
+}
 input,
 input.form-control {
   font-size: 20px;
   font-weight: lighter;
+}
+/*
+	Main
+*/
+.jumbotron {
+  background-color: #fff;
 }
 /*
 	Navigation
