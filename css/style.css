@@ -8,7 +8,7 @@ body {
   height: 100%;
 }
 body {
-  background: url('../images/noise.png') repeat;
+  background: url('../images/noise.png') repeat #f5f4f2;
   padding-top: 50px;
   padding-bottom: 20px;
 }
@@ -30,6 +30,7 @@ input.form-control {
 */
 #list-name {
   background: #40b2fd;
+  border-bottom: 2px solid #428bca;
   margin-top: 0;
   margin-bottom: 0;
   overflow-wrap: break-word;
