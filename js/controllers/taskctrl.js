@@ -17,9 +17,11 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 
 	// Create Firebase reference to 'users' if user authenticates
 	$rootScope.$on("login", function(event, user) {		
-        var userRef = new Firebase('https://listify.firebaseio.com/lists/' + listId + '/users/')
+        var userRef = new Firebase('https://listify.firebaseio.com/lists/' + listId + '/users/'),
+        	timestamp = new Date();
+        console.log(timestamp);
         $scope.users = [];
-        $scope.users.push({user: user.uid});
+        $scope.users.push({user: user.uid, timestamp: timestamp.toString()});
 		angularFire(userRef, $scope, "users");        
     });
 
