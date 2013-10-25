@@ -1,1 +1,1 @@
-app.controller("LoginCtrl",["$scope","$rootScope","authService",function(e,t,n){n.auth.login("anonymous",{rememberMe:!0});t.$on("login",function(e,t){});t.$on("loginError",function(e,t){});t.$on("logout",function(e){})}]);
+app.controller("LoginCtrl",["$scope","$rootScope","authService",function(e,t,n){n.auth.login("anonymous",{rememberMe:!0});t.$on("login",function(t,n){console.log("authorized");e.showAlert=!1});t.$on("loginError",function(t,n){e.showAlert=!0});t.$on("logout",function(t){console.log("unauthorized");e.showAlert=!0})}]);
