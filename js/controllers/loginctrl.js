@@ -9,9 +9,9 @@ app.controller('LoginCtrl', ["$scope", "$rootScope", "authService", function ($s
 
     });
     $rootScope.$on("loginError", function(event, error) {
-        // tell the user about the error
+
     });
     $rootScope.$on("logout", function(event) {
-        // do logout things
+
     });
 }]);
