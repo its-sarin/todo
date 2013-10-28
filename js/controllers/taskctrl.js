@@ -27,11 +27,13 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 
 	// Adds a task to $scope.tasks and attaches a timestamped id
 	$scope.addTask = function(event)	{
-		var key = event.char || event.keyCode,	// Firefox support
+		var key = event.keyCode || event.char,	// Firefox support
 			target = event.target || event.srcElement,
 			newTodo = {};
 
-		if (key != 13 || (/^ *$/.test(target.value))) return;
+		if (key != 13 || (/^ *$/.test(target.value))) {
+			return;
+		}
 		
 		newTodo.value = $scope.todo;
 		newTodo.time = new Date();
