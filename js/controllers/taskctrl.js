@@ -37,7 +37,7 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 		
 		newTodo.value = $scope.todo;
 		newTodo.time = new Date();
-		newTodo.id = new Date().getUTCMilliseconds() + (Math.floor(Math.random()*10));
+		newTodo.id = new Date().getUTCMilliseconds() + (Math.floor(Math.random()*100));
 
 		$scope.tasks.push({
 			task: newTodo.value, 
