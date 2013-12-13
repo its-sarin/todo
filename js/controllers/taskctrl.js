@@ -29,7 +29,10 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 	$scope.addTask = function(event)	{
 		var key = event.keyCode || event.char,	// Firefox support
 			target = event.target || event.srcElement,
-			newTodo = {};
+			newTodo = {},
+			ms = new Date().getUTCMilliseconds(),
+			dt = new Date().getUTCDay(),
+			rn = Math.floor(Math.random()*100);
 
 		if (key != 13 || (/^ *$/.test(target.value))) {
 			return;
@@ -37,7 +40,7 @@ app.controller('TaskCtrl', ['$scope', '$rootScope', '$location', 'angularFire', 
 		
 		newTodo.value = $scope.todo;
 		newTodo.time = new Date();
-		newTodo.id = new Date().getUTCMilliseconds() + (Math.floor(Math.random()*100));
+		newTodo.id = '' + ms + dt + rn;
 
 		$scope.tasks.push({
 			task: newTodo.value, 
